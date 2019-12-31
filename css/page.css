@@ -1,0 +1,57 @@
+/* ===================================== 
+   Page Styles
+======================================== */
+* {
+	box-sizing: border-box;
+}
+
+.main-header{
+  display: inline-flex;
+  width:100%;
+}
+
+body {
+	font-size: 1.4em;
+	font-family: 'Varela Round', sans-serif;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+}
+h1{
+  font-size: 1em;
+  color:white;
+  flex-grow: 1;
+}
+
+.employeeGrid{
+  width:100%;
+}
+.employeeBox:hover{
+  border: 3px solid black;
+}
+.employeeBox{
+  border: 2px solid gray;
+  border-radius: 2%;
+  margin:1%;
+  display: flex;
+  width: 90%;
+}
+.employeeBox img{
+  border-radius: 50%;
+  width:100px;
+  height: 100px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.employeeBox h2{
+  font-size: 1em;
+}
+.employeeBox p{
+  font-size: 0.5em;
+  color:gray;
+}
+.infoBox{
+  padding: 3%;
+}
