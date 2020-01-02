@@ -55,3 +55,9 @@ h1{
 .infoBox{
   padding: 3%;
 }
+.hiddenBox{
+  display:none;
+}
+.modalBox{
+  display:none;
+}
