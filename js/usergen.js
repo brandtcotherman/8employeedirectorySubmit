@@ -11,8 +11,6 @@ const test = employees => {
     }
 };  
 
-var modalBox = document.querySelectorAll(".modalBox");
-
 var modal = document.getElementById("myModal");// Get the modal
 var arrayCounter = -1;
 function generateHTML(data) {
@@ -37,36 +35,52 @@ function generateHTML(data) {
     div.setAttribute('class', 'modalBox');
     div.setAttribute('id',arrayCounter);
     document.querySelector('.modal-content').appendChild(div);
+
+    //<p>Birthday: Day../Month../Year..1967-08-10T17:56:57.716Z</p>
+    var str = data.dob.date;//console.log(str);
+    var year = str.substring(2,4);//console.log(year);
+    var month = str.substring(5,7);//console.log(month);
+    var day = str.substring(8,10);//console.log(day);
  
     div.innerHTML = `
     <img src=${data.picture.large}>
     <h2>${data.name.first} ${data.name.last}</h2>
     <p>${data.email}</p>
     <p>${data.location.city}</p>
+    <hr />
     <p>${data.phone}</p>
     <p>${data.location.street.number} ${data.location.city} ${data.location.state} ${data.location.postcode}</p>
-    <p>Birthday: Day../Month../Year..${data.dob.date}</p>
+    <p>Birthday: ${day}/${month}/${year}</p>
     `;
     
     var span = document.getElementsByClassName("close")[0];// Get the <span> element that closes the modal
     var btn = document.querySelectorAll(".employeeBox");
+    var btnid;//id of button clicked
 
     for(i = 0; i < btn.length;i++) {
         btn[i].addEventListener('click', function(){
           modal.style.display = "block";
-
-          console.log("modalBox: "+modalBox[i]);
-          modalBox[i].style.display = "block";//display just the employee clicked
         });
+        btn[i].onclick = function() {
+            btnid = this.id;
+            let modalBox = document.getElementsByClassName('modalBox')[btnid];//displays modal employee content
+            modalBox.style.display = "block";
+        };
+        //when click out of window set display to none
     }
     span.onclick = function() {// When the user clicks on <span> (x), close the modal
       modal.style.display = "none";
+      let modalBox = document.getElementsByClassName('modalBox')[btnid];//displays modal employee content
+      modalBox.style.display = "none";
     };
     window.onclick = function(event) {// When the user clicks anywhere outside of the modal, close it
       if (event.target == modal) {
         modal.style.display = "none";
+        let modalBox = document.getElementsByClassName('modalBox')[btnid];
+        modalBox.style.display = "none";
       }
     };
 }
+
 
 
